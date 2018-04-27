@@ -43,15 +43,25 @@ namespace LucenePanGuDemo
         /// </summary>
         public static void CreateIndex(Article article)
         {
-            var analyzer = CreatePanGuAnalyzer();
-            using (IndexWriter writer = new IndexWriter(directory, new IndexWriterConfig(Lucene_Version, analyzer)))
+            using (IndexWriter writer = new IndexWriter(directory, new IndexWriterConfig(Lucene_Version, CreatePanGuAnalyzer())))
             {
                 Document doc = new Document();
-                doc.AddInt32Field("Id", article.Id, Field.Store.YES);
+                doc.AddStringField("Id", article.Id.ToString(), Field.Store.YES);
                 doc.AddTextField("Title", article.Title, Field.Store.YES);
                 doc.AddTextField("Content", article.Content, Field.Store.YES);
                 doc.AddStringField("Author", article.Author, Field.Store.YES);
                 writer.AddDocument(doc);
+                writer.Commit();
+            }
+        }
+
+        /// <summary>删除文章索引
+        /// </summary>
+        public static void DeleteIndex(Article article)
+        {
+            using (IndexWriter writer = new IndexWriter(directory, new IndexWriterConfig(Lucene_Version, CreatePanGuAnalyzer())))
+            {
+                writer.DeleteDocuments(new Term("Id", article.Id.ToString()));
                 writer.Commit();
             }
         }

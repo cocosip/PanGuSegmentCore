@@ -54,11 +54,19 @@ namespace LucenePanGuDemo
             Console.WriteLine("创建文章4索引");
             Console.WriteLine("创建索引完成......");
 
+            Console.WriteLine($"请输入搜索的内容,输入Exist退出");
 
-            while (true)
+            var q = Console.ReadLine();
+            while (q.ToLower() != "exit")
             {
                 Console.WriteLine($"请输入搜索的内容:");
-                var q = Console.ReadLine();
+                q = Console.ReadLine();
+                if (q == "delete")
+                {
+                    Console.WriteLine("删除了Id为6936136的文章");
+                    ArticleIndexHelper.DeleteIndex(new Article() { Id = 6936136 });
+                }
+
                 Console.WriteLine($"您输入的为:{q},开始进行检索......");
                 Console.WriteLine("检索结果:");
                 var productIndexs = ArticleIndexHelper.Search(q);
@@ -67,6 +75,8 @@ namespace LucenePanGuDemo
                     Console.WriteLine($"文章标题:{x.Title},作者:{x.Author},文章Id:{x.Id}");
                 });
             }
+
+
         }
     }
 }
