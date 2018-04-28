@@ -55,6 +55,23 @@ namespace LucenePanGuDemo
             }
         }
 
+        /// <summary>更新索引
+        /// </summary>
+        public static void UpdateIndex(Article article)
+        {
+            using (IndexWriter writer = new IndexWriter(directory, new IndexWriterConfig(Lucene_Version, CreatePanGuAnalyzer())))
+            {
+                Document doc = new Document();
+                doc.AddStringField("Id", article.Id.ToString(), Field.Store.YES);
+                doc.AddTextField("Title", article.Title, Field.Store.YES);
+                doc.AddTextField("Content", article.Content, Field.Store.YES);
+                doc.AddStringField("Author", article.Author, Field.Store.YES);
+                writer.UpdateDocument(new Term("Id", article.Id.ToString()), doc);
+                //Optimize??
+                writer.Commit();
+            }
+        }
+
         /// <summary>删除文章索引
         /// </summary>
         public static void DeleteIndex(Article article)
@@ -109,6 +126,11 @@ namespace LucenePanGuDemo
 
             //TopDocs 指定0到GetTotalHits() 即所有查询结果中的文档 如果TopDocs(20,10)则意味着获取第20-30之间文档内容 达到分页的效果
             ScoreDoc[] docs = collector.GetTopDocs(0, collector.TotalHits).ScoreDocs;
+            //如果是分页,需要用下面的代码
+            ////获取上一页的最后一个元素  
+            //ScoreDoc lastSd = GetLastScoreDoc(pageIndex, pageSize, query, searcher);
+            ////通过最后一个元素去搜索下一页的元素  
+            //ScoreDoc[] docs = searcher.SearchAfter(lastSd, query, pageSize).ScoreDocs;
 
             var articles = new List<Article>();
             for (int i = 0; i < docs.Length; i++)
@@ -118,7 +140,7 @@ namespace LucenePanGuDemo
 
                 var article = new Article();
 
-                article.Id = doc.GetField("Id").GetInt32ValueOrDefault();
+                article.Id = Convert.ToInt32(doc.Get("Id"));
                 article.Title = doc.Get("Title");
                 article.Content = doc.Get("Content");
                 article.Author = doc.Get("Author");
@@ -146,6 +168,19 @@ namespace LucenePanGuDemo
                 MultiDimensionality = true
             }, new PanGu.Match.MatchParameter());
             return analyzer;
+        }
+
+        /// <summary>根据页码和分页大小获取上一次的最后一个ScoreDoc
+        /// </summary>
+        private ScoreDoc GetLastScoreDoc(int pageIndex, int pageSize, Query query, IndexSearcher searcher)
+        {
+            if (pageIndex == 1)
+            {
+                return null;
+            }
+            int num = pageSize * (pageIndex - 1);//获取上一页的最后数量  
+            TopDocs tds = searcher.Search(query, num);
+            return tds.ScoreDocs[num - 1];
         }
         #endregion
 
