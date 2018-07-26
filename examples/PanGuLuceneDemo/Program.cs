@@ -1,19 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace LucenePanGuDemo
+namespace PanGuLuceneDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Console.WriteLine("盘古分词初始化");
             PanGu.Segment.Init();
-
-            ProductIndexTest();
+            ProductIndexTest2();
         }
 
         static void ArticleTest()
@@ -96,6 +96,50 @@ namespace LucenePanGuDemo
                 });
             }
         }
+
+        static void ProductIndexTest2()
+        {
+            Console.WriteLine("清理索引...");
+            ProductIndexHelper.ClearIndex();
+            Console.WriteLine("开始创建索引");
+            var json = File.ReadAllText("D:\\1.txt");
+            var products = JsonConvert.DeserializeObject<List<Product>>(json);
+
+            foreach (var product in products)
+            {
+                ProductIndexHelper.CreateIndex(product);
+            }
+
+            Console.WriteLine("创建商品索引完成......");
+
+            Console.WriteLine($"请输入搜索的内容,输入Exist退出");
+
+            var q = Console.ReadLine();
+            while (q.ToLower() != "exit")
+            {
+                Console.WriteLine($"请输入搜索的内容:");
+                q = Console.ReadLine();
+                if (q.ToLower() == "delete")
+                {
+                    Console.WriteLine("删除了Id为3的商品");
+                    ProductIndexHelper.DeleteIndex(new Product() { Id = 3 });
+                }
+                //if (q.ToLower() == "update")
+                //{
+                //    Console.WriteLine("更新文章Id为8949393的内容");
+                //    ProductIndexHelper.UpdateIndex(product2);
+                //}
+
+                Console.WriteLine($"您输入的为:{q},开始进行检索......");
+                Console.WriteLine("检索结果:");
+                var productIndexs = ProductIndexHelper.Search(q);
+                productIndexs.ForEach(x =>
+                {
+                    Console.WriteLine($"商品名:{x.Name},商品编号:{x.ProductCode},类目:{x.CategoryName},品牌:{x.BrandName}");
+                });
+            }
+        }
+
 
         static void ProductIndexTest()
         {

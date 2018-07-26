@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "examples\Demo\Demo.
 		{30C271CC-D747-477C-A886-4846F454D1B9} = {30C271CC-D747-477C-A886-4846F454D1B9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanGu.Lucene.Analyzer", "src\PanGu.Lucene.Analyzer\PanGu.Lucene.Analyzer.csproj", "{D66DEC39-FA29-4773-BCCC-8C13174ED33E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanGu.Lucene.Analyzer", "src\PanGu.Lucene.Analyzer\PanGu.Lucene.Analyzer.csproj", "{D66DEC39-FA29-4773-BCCC-8C13174ED33E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucenePanGuDemo", "examples\LucenePanGuDemo\LucenePanGuDemo.csproj", "{C076D763-476B-48D5-957D-141587AAEA49}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucenePanGuDemo", "examples
 		{24A2CA83-7DD6-42DF-B7FF-8D9C6D62B04A} = {24A2CA83-7DD6-42DF-B7FF-8D9C6D62B04A}
 		{30C271CC-D747-477C-A886-4846F454D1B9} = {30C271CC-D747-477C-A886-4846F454D1B9}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PanGuLuceneDemo", "examples\PanGuLuceneDemo\PanGuLuceneDemo.csproj", "{988B0112-3C0D-456B-B277-C8F7DB7690CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{C076D763-476B-48D5-957D-141587AAEA49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C076D763-476B-48D5-957D-141587AAEA49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C076D763-476B-48D5-957D-141587AAEA49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988B0112-3C0D-456B-B277-C8F7DB7690CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988B0112-3C0D-456B-B277-C8F7DB7690CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988B0112-3C0D-456B-B277-C8F7DB7690CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988B0112-3C0D-456B-B277-C8F7DB7690CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{6DDF1CA4-1BC7-44E7-9FE6-570E5CE173AF} = {422C0302-62D7-4B58-9509-88CB76F8C717}
 		{D66DEC39-FA29-4773-BCCC-8C13174ED33E} = {ED03B7C5-F4C2-408E-A437-39924FFBDA38}
 		{C076D763-476B-48D5-957D-141587AAEA49} = {422C0302-62D7-4B58-9509-88CB76F8C717}
+		{988B0112-3C0D-456B-B277-C8F7DB7690CC} = {422C0302-62D7-4B58-9509-88CB76F8C717}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E018F824-AFA3-4EC7-88A3-AB9CA03EA42B}
