@@ -1,26 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFrameworks>net45;net461;netstandard2.0</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
-  </PropertyGroup>
   
+  <Import Project="..\..\build\common.props" />
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>PanGu</AssemblyName>
+    <PackageId>PanGuSegmentCore.Lucene.Analyzer</PackageId>
+    <RootNamespace>Lucene.Net.Analysis.PanGu</RootNamespace>
+    <Description>PanGu分词Lucene搜索分词</Description>
+  </PropertyGroup>
+ 
   <ItemGroup>
-    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
-    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00005" />
+    <PackageReference Include="Lucene.Net" Version="4.8.0-beta00007" />
+    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00007" />
   </ItemGroup>
 
   <ItemGroup>

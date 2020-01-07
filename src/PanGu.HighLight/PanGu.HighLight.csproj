@@ -1,21 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  
+  <Import Project="..\..\build\common.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net461</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <OutputPath>..\Output</OutputPath>
-    <DefineConstants>TRACE;DEBUG;</DefineConstants>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>PanGu.HighLight</AssemblyName>
+    <PackageId>PanGuSegmentCore.HighLight</PackageId>
+    <RootNamespace>PanGu.HighLight</RootNamespace>
+    <Description>PanGu分词,词语高亮</Description>
   </PropertyGroup>
   
   <ItemGroup>
