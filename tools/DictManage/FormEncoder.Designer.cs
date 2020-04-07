@@ -73,7 +73,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxEncoder);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEncoder";
             this.Text = "选择导入文本编码格式";
             this.ResumeLayout(false);
