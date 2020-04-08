@@ -140,7 +140,7 @@
             this.Controls.Add(this.textBoxWord);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.posCtrl);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBatchInsert";
             this.Text = "批量增加";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFrequency)).EndInit();

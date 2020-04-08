@@ -360,7 +360,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
             this.Text = "字典管理";
